@@ -1,0 +1,19 @@
+services:
+    syncthing:
+        image: syncthing/syncthing:2.0.16
+        container_name: syncthing
+        hostname: syncthing
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - TZ=Etc/UTC
+        volumes:
+            - ./data:/var/syncthing
+        restart: unless-stopped
+        networks:
+            - caddy_network
+
+networks:
+    caddy_network:
+        name: caddy_network
+        external: true

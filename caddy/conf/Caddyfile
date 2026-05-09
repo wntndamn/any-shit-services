@@ -1,0 +1,5 @@
+https://{$SYNCTHING_DOMAIN} {
+    reverse_proxy http://syncthing:8384 {
+        header_up Host {upstream_hostport}
+    }
+}

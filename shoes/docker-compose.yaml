@@ -1,0 +1,9 @@
+services:
+    shoes:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        restart: always
+        volumes:
+            - "./config.yaml:/config.shoes.yaml"
+        network_mode: host

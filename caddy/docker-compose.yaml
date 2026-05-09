@@ -1,0 +1,25 @@
+services:
+    caddy:
+        image: caddy:2.11.2-alpine
+        cap_add:
+            - NET_ADMIN
+        ports:
+            - "80:80"
+            - "443:443"
+            - "443:443/udp"
+        volumes:
+            - ./conf:/etc/caddy
+            - caddy_data:/data
+            - caddy_config:/config
+        env_file: .env
+        restart: unless-stopped
+        networks:
+            - caddy_network
+
+volumes:
+    caddy_data:
+    caddy_config:
+
+networks:
+    caddy_network:
+        name: caddy_network
